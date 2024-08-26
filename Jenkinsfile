@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('clone') {
             steps {
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Praveenchinna14/CandyStore.git']]) 
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Asrith01/CandyStore.git']]) 
             }
         }
         stage('docker') {
             steps {
                 script {
-                     withDockerRegistry(credentialsId: 'docker-cred') {
+                  withDockerRegistry(credentialsId: 'docker-1')  {
                          sh 'docker build -t praveenchinna/candystore .'
                          sh 'docker push praveenchinna/candystore:latest'
                    }
