@@ -10,7 +10,7 @@ pipeline {
         stage('docker') {
             steps {
                 script {
-                 withDockerRegistry(credentialsId: 'javaID') {
+                withDockerRegistry(credentialsId: 'sns') {
                          sh 'docker build -t anilmaripi/supercandy .'
                          sh 'docker push anilmaripi/supercandy:latest'
                    }
